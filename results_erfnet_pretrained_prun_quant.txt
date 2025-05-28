@@ -1,0 +1,75 @@
+MODEL Erfnet (normale)
+Number of parameters: 2066836
+Number of FLOPs: 44979191808
+MEAN IoU: 72.20%
+Elapsed time: 38.79254603385925 seconds
+
+Dataset RoadAnomaly21 using method: MaxLogit
+AUPRC score:38.311787931651025	FPR@TPR95:59.35213292469162
+Dataset FSstatic using method: MaxLogit
+AUPRC score:9.498766413209685	FPR@TPR95:40.29955348187207
+Dataset RoadObstacle21 using method: MaxLogit
+AUPRC score:4.6260127810988205	FPR@TPR95:48.4844294439513
+Dataset LostFound using method: MaxLogit
+AUPRC score:3.3009197602776235	FPR@TPR95:45.51865053053941
+Dataset RoadAnomaly using method: MaxLogit
+AUPRC score:15.581424450117707	FPR@TPR95:73.25668755507962
+Elapsed time: 61.05380892753601 seconds
+
+
+MODEL Erfnet (prunato)
+Number of parameters: 2066836
+Number of FLOPs: 44979191808
+MEAN IoU: 60.80%
+Elapsed time: 39.56885576248169 seconds
+
+Dataset RoadAnomaly21 using method: MaxLogit
+AUPRC score:19.57540878212719	FPR@TPR95:82.14113819539047
+Dataset FSstatic using method: MaxLogit
+AUPRC score:14.07558956801534	FPR@TPR95:64.15811609285365
+Dataset RoadObstacle21 using method: MaxLogit
+AUPRC score:5.076312538299563	FPR@TPR95:63.96538896580506
+Dataset LostFound using method: MaxLogit
+AUPRC score:2.4563358381524845	FPR@TPR95:43.74741220124997
+Dataset RoadAnomaly using method: MaxLogit
+AUPRC score:11.554383809704419	FPR@TPR95:83.41966259392451
+Elapsed time: 61.35008645057678 seconds
+
+
+MODEL Erfnet (quantizzato)
+Number of parameters: 576
+Number of FLOPs: 0
+MEAN IoU: 58.40%
+Elapsed time: 137.61420607566833 seconds
+
+Dataset RoadAnomaly21 using method: MaxLogit
+AUPRC score:30.79244726432352	FPR@TPR95:67.69914546453302
+Dataset FSstatic using method: MaxLogit
+AUPRC score:9.669275686909927	FPR@TPR95:39.07852679676671
+Dataset RoadObstacle21 using method: MaxLogit
+AUPRC score:3.132563212853127	FPR@TPR95:69.22745246901171
+Dataset LostFound using method: MaxLogit
+AUPRC score:2.2685432611431766	FPR@TPR95:62.15582817736498
+Dataset RoadAnomaly using method: MaxLogit
+AUPRC score:14.175849945867224	FPR@TPR95:78.2687029863372
+Elapsed time: 82.05468916893005 seconds
+
+
+MODEL Erfnet (quantizzato e prunato)
+Number of parameters: 576
+Number of FLOPs: 0
+MEAN IoU: 40.26%
+Elapsed time: 123.72805500030518 seconds
+
+Dataset RoadAnomaly21 using method: MaxLogit
+AUPRC score:20.354759135265336	FPR@TPR95:83.83367914009531
+Dataset FSstatic using method: MaxLogit
+AUPRC score:4.842126622193404	FPR@TPR95:74.56968008114187
+Dataset RoadObstacle21 using method: MaxLogit
+AUPRC score:3.660363048840501	FPR@TPR95:97.24055369630514
+Dataset LostFound using method: MaxLogit
+AUPRC score:2.17459745965825	FPR@TPR95:44.13987569471548
+Dataset RoadAnomaly using method: MaxLogit
+AUPRC score:14.39772986524101	FPR@TPR95:85.95881313255944
+Elapsed time: 75.88642454147339 seconds
+

@@ -1,0 +1,158 @@
+MODEL Erfnet
+MEAN IoU: 64.31%
+Elapsed time: 57.37210726737976 seconds
+
+Dataset RoadAnomaly21 using method: VoidClass
+AUPRC score:19.308931273418292	FPR@TPR95:78.29487104845457
+Dataset FSstatic using method: VoidClass
+AUPRC score:20.770868930126724	FPR@TPR95:23.869019489520223
+Dataset RoadObstacle21 using method: VoidClass
+AUPRC score:1.4078150367220197	FPR@TPR95:99.79048394255355
+Dataset LostFound using method: VoidClass
+AUPRC score:10.163790870208599	FPR@TPR95:18.18258604675726
+Dataset RoadAnomaly using method: VoidClass
+AUPRC score:9.706640648679297	FPR@TPR95:91.1954831604449
+Elapsed time: 68.70604681968689 seconds
+
+
+MODEL Erfnet
+MEAN IoU: 63.20%
+Elapsed time: 41.74054026603699 seconds
+
+Dataset RoadAnomaly21 using method: VoidClass
+AUPRC score:23.177949732219602	FPR@TPR95:67.99746613060469
+Dataset FSstatic using method: VoidClass
+AUPRC score:15.08436857343086	FPR@TPR95:27.171740370013342
+Dataset RoadObstacle21 using method: VoidClass
+AUPRC score:1.592506368632454	FPR@TPR95:98.16242348865248
+Dataset LostFound using method: VoidClass
+AUPRC score:9.623139257049122	FPR@TPR95:21.55910793315528
+Dataset RoadAnomaly using method: VoidClass
+AUPRC score:11.016498987756398	FPR@TPR95:85.10795042297767
+Elapsed time: 63.40507435798645 seconds
+
+
+MODEL Erfnet
+MEAN IoU: 63.34%
+Elapsed time: 47.17740225791931 seconds
+
+Dataset RoadAnomaly21 using method: VoidClass
+AUPRC score:22.385577121607174	FPR@TPR95:68.36815238844561
+Dataset FSstatic using method: VoidClass
+AUPRC score:15.595646937009121	FPR@TPR95:26.76901630492011
+Dataset RoadObstacle21 using method: VoidClass
+AUPRC score:1.3785830895351923	FPR@TPR95:99.4853908040647
+Dataset LostFound using method: VoidClass
+AUPRC score:9.860451675361816	FPR@TPR95:20.298417702146317
+Dataset RoadAnomaly using method: VoidClass
+AUPRC score:10.789075137227396	FPR@TPR95:86.15979142241686
+Elapsed time: 63.086143255233765 seconds
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+MODEL Enet
+MEAN IoU: 43.91%
+Elapsed time: 35.527889251708984 seconds
+
+Dataset RoadAnomaly21 using method: VoidClass
+AUPRC score:13.29456531455892	FPR@TPR95:90.84977174531504
+Dataset FSstatic using method: VoidClass
+AUPRC score:11.257494093280295	FPR@TPR95:67.53462903941535
+Dataset RoadObstacle21 using method: VoidClass
+AUPRC score:1.3850808428177663	FPR@TPR95:76.9012324620093
+Dataset LostFound using method: VoidClass
+AUPRC score:8.073517722205164	FPR@TPR95:72.21215148273727
+Dataset RoadAnomaly using method: VoidClass
+AUPRC score:10.175648245630196	FPR@TPR95:89.42925378321563
+Elapsed time: 60.62899160385132 seconds
+
+
+MODEL Enet
+MEAN IoU: 43.91%
+Elapsed time: 34.48007535934448 seconds
+
+Dataset RoadAnomaly21 using method: VoidClass
+AUPRC score:13.381159594059753	FPR@TPR95:90.80839108803525
+Dataset FSstatic using method: VoidClass
+AUPRC score:11.389115786039092	FPR@TPR95:67.9689666530527
+Dataset RoadObstacle21 using method: VoidClass
+AUPRC score:1.5017728206332885	FPR@TPR95:76.84413876707428
+Dataset LostFound using method: VoidClass
+AUPRC score:7.903543807408384	FPR@TPR95:72.43510538528572
+Dataset RoadAnomaly using method: VoidClass
+AUPRC score:10.450231168436323	FPR@TPR95:89.07076370685735
+Elapsed time: 60.78168964385986 seconds
+
+
+MODEL Enet
+MEAN IoU: 43.91%
+Elapsed time: 38.25822448730469 seconds
+
+Dataset RoadAnomaly21 using method: VoidClass
+AUPRC score:13.381359288889877	FPR@TPR95:90.80762563865733
+Dataset FSstatic using method: VoidClass
+AUPRC score:11.38774800871119	FPR@TPR95:67.969896463304
+Dataset RoadObstacle21 using method: VoidClass
+AUPRC score:1.5023673559987922	FPR@TPR95:76.84372474463096
+Dataset LostFound using method: VoidClass
+AUPRC score:7.904653652943095	FPR@TPR95:72.4302102301085
+Dataset RoadAnomaly using method: VoidClass
+AUPRC score:10.450470216065364	FPR@TPR95:89.07021361585255
+Elapsed time: 65.22131633758545 seconds
+
+
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+
+MODEL Bisenet
+MEAN IoU: 66.18%
+Elapsed time: 34.35084128379822 seconds
+
+Dataset RoadAnomaly21 using method: VoidClass
+AUPRC score:28.112454241797575	FPR@TPR95:67.69219100142351
+Dataset FSstatic using method: VoidClass
+AUPRC score:18.842266936875543	FPR@TPR95:25.311234804285398
+Dataset RoadObstacle21 using method: VoidClass
+AUPRC score:1.822696034292984	FPR@TPR95:39.710300215954106
+Dataset LostFound using method: VoidClass
+AUPRC score:12.13332715442806	FPR@TPR95:43.22115102172903
+Dataset RoadAnomaly using method: VoidClass
+AUPRC score:13.120052655112474	FPR@TPR95:74.83564268119434
+Elapsed time: 57.229158878326416 seconds
+
+
+MODEL Bisenet
+MEAN IoU: 66.11%
+Elapsed time: 33.724483489990234 seconds
+
+Dataset RoadAnomaly21 using method: VoidClass
+AUPRC score:27.512860700109204	FPR@TPR95:69.54292118214146
+Dataset FSstatic using method: VoidClass
+AUPRC score:17.982908514305567	FPR@TPR95:29.2909406495143
+Dataset RoadObstacle21 using method: VoidClass
+AUPRC score:1.8733409191912318	FPR@TPR95:36.900578306548844
+Dataset LostFound using method: VoidClass
+AUPRC score:12.115946459912195	FPR@TPR95:46.087764175599546
+Dataset RoadAnomaly using method: VoidClass
+AUPRC score:13.180263360893443	FPR@TPR95:74.3367418758611
+Elapsed time: 62.07033181190491 seconds
+
+
+MODEL Bisenet
+MEAN IoU: 66.28%
+Elapsed time: 34.71166706085205 seconds
+
+Dataset RoadAnomaly21 using method: VoidClass
+AUPRC score:26.428726159097028	FPR@TPR95:71.26203814118273
+Dataset FSstatic using method: VoidClass
+AUPRC score:17.291512914380807	FPR@TPR95:28.95652277000702
+Dataset RoadObstacle21 using method: VoidClass
+AUPRC score:1.7475497536651736	FPR@TPR95:44.34629582400403
+Dataset LostFound using method: VoidClass
+AUPRC score:10.637630456501379	FPR@TPR95:45.6160310995101
+Dataset RoadAnomaly using method: VoidClass
+AUPRC score:12.56727984129346	FPR@TPR95:76.50072654327326
+Elapsed time: 57.42082643508911 seconds
+
+
+

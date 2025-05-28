@@ -1,0 +1,44 @@
+MODEL Erfnet
+Number of parameters: 2066836
+Model size: 7.909797668457031 MB
+
+
+MODEL Erfnet
+Number of parameters: 2066836
+Model size: 7.909797668457031 MB
+
+
+MODEL Erfnet
+Number of parameters: 576
+Model size: 0.00484466552734375 MB
+
+
+MODEL Erfnet
+Number of parameters: 576
+Model size: 0.00484466552734375 MB
+
+
+MODEL Erfnet
+Number of parameters: 2057279
+Number of active parameters: 2057278
+Model size: 7.909797668457031 MB
+
+
+MODEL Erfnet
+Number of parameters: 2057279
+Number of active parameters: 1606007
+Model size: 7.909797668457031 MB
+
+
+MODEL Erfnet
+Number of parameters: 288
+Number of active parameters: 288
+Model size: 0.00484466552734375 MB
+
+
+MODEL Erfnet
+Number of parameters: 288
+Number of active parameters: 288
+Model size: 0.00484466552734375 MB
+
+
