@@ -50,8 +50,7 @@ IMAGESIZE = (512, 1024)
 CPU = 0
 # flag per attivare la stampa del tempo impiegato
 TIME = 1
-# flag per attivare la valutazione delle prestazioni
-PERFORMANCE = 0
+
 # numero di split in cui dividere il dataset per la valutazione (solo il primo viene utilizzato, solo per iou evaluation)
 SPLIT = 0
 
@@ -67,7 +66,7 @@ DatasetDir = {
 
 def main():
 
-    global TEMPERATURES, MODEL, NUM_CLASSES, IOU, ANOMALY, VOID, PRUNED, QUANT, IMAGESIZE, CPU, PRINT, TIME, PERFORMANCE, SPLIT
+    global TEMPERATURES, MODEL, NUM_CLASSES, IOU, ANOMALY, VOID, PRUNED, QUANT, IMAGESIZE, CPU, PRINT, TIME, SPLIT
 
     cpu = CPU
 
@@ -110,7 +109,7 @@ def main():
         if QUANT == 1:
             weights = "pruning_quantization/enet/midenet_quantized_fx.pth"
         else:
-            weights = "distillation/midenet_distilled_19_232483.6588287815.pth"
+            weights = "distillation/midenet_distilled.pth"
         model = MidENet(NUM_CLASSES)
 
     # definisce un parser, ovvero un oggetto che permette di leggere gli argomenti passati da riga di comando
@@ -185,17 +184,6 @@ def main():
     file = open('results.txt', 'a')
     file.write("MODEL " + MODEL.capitalize() + "\n")
     file.close()
-
-    if PERFORMANCE:
-            input_tensor = torch.randn(1, 3, IMAGESIZE[0], IMAGESIZE[1])
-            num_params = count_params(model)
-            #num_flops = count_flops(model, input_tensor)
-            model_size = get_model_size(model)
-            file = open('results.txt', 'a')
-            file.write("Number of parameters: " + str(num_params) + "\n")
-            #file.write("Number of FLOPs: " + str(num_flops) + "\n")
-            file.write("Model size: " + str(model_size) + " MB\n")
-            file.close()
 
     # se non esiste il file results.txt, crea un file vuoto
     if not os.path.exists('results.txt'):

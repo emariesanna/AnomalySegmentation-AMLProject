@@ -1,0 +1,24 @@
+MODEL Erfnet
+MEAN IoU: 61.25%
+Elapsed time: 208.48288011550903 seconds
+
+
+
+MODEL Erfnet
+MEAN IoU: 55.68%
+Elapsed time: 68.60347127914429 seconds
+
+
+
+MODEL Erfnet
+MEAN IoU: 48.68%
+Elapsed time: 24.601993083953857 seconds
+
+
+
+MODEL Erfnet
+MEAN IoU: 41.16%
+Elapsed time: 24.02719736099243 seconds
+
+
+
