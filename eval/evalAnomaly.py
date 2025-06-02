@@ -1,7 +1,7 @@
 import os
 import glob
 import random
-from print_output import print_anomaly
+from eval.print_output import print_anomaly
 import torch
 import numpy as np
 from ood_metrics import fpr_at_95_tpr
@@ -9,7 +9,7 @@ from sklearn.metrics import average_precision_score
 import torch.nn.functional as F
 from PIL import Image
 from torchvision.transforms import Compose, Resize, ToTensor
-from transform import Relabel, ToLabel
+from eval.transform import Relabel, ToLabel
 
 
 # *********************************************************************************************************************

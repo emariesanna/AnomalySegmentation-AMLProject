@@ -10,7 +10,7 @@ from tqdm import tqdm
 
 sys.path.append(os.path.dirname(os.path.abspath(__file__)))
 
-MODEL_NAME = 'BiSeNet'
+MODEL_NAME = 'MidENet'  # Scegli il modello da utilizzare: 'ERFNet', 'ENet', 'BiSeNet', 'MidENet'
 
 def main():
 
@@ -23,8 +23,14 @@ def main():
     elif MODEL_NAME == 'BiSeNet':
         from eval.bisenet import BiSeNetV1
         model = BiSeNetV1(n_classes=20, aux_mode="train")
+    elif MODEL_NAME == 'MidENet':
+        from models.midenet import MidENet
+        model = MidENet(num_classes=20)
 
-    weightspath = f"./trained_models/finetuning/{MODEL_NAME.lower()}_finetuned.pth" # Usa map_location='cuda' per GPU
+    if MODEL_NAME == 'MidENet':
+        weightspath = "./trained_models/distillation/midenet_distilled.pth"
+    else:
+        weightspath = f"./trained_models/finetuning/{MODEL_NAME.lower()}_finetuned.pth" # Usa map_location='cuda' per GPU
     model = load_my_state_dict(model, torch.load(weightspath, map_location=lambda storage, loc: storage))
 
     for name, module in model.named_modules():
@@ -44,7 +50,7 @@ def main():
 
     device = 'cuda'
     datadir = './Dataset/Cityscapes'
-    dataloader = get_cityscapes_loader(datadir, 20, 'train', num_workers=4, imagesize = (512, 1024))
+    dataloader = get_cityscapes_loader(datadir, batch_size=10, subset='train', num_workers=4, imagesize = (512, 1024))
     #scaler = GradScaler('cuda')
 
     model.to(device)
@@ -75,6 +81,8 @@ def main():
 
 
     torch.save(model.state_dict(), f'./trained_models/pruning_quantization/{MODEL_NAME.lower()}/{MODEL_NAME.lower()}_pruned_30%.pth')
+
+    model.eval()
 
     iou = eval_iou(model, datadir, cpu=False, num_classes=20, ignoreIndex=19)
 

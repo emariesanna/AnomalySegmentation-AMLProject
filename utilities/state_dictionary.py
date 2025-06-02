@@ -4,6 +4,8 @@ from torch.ao.quantization import get_default_qconfig, QConfigMapping
 from torch.ao.quantization.quantize_fx import prepare_fx, convert_fx
 import torch
 
+from models.midenet import MidENet
+
 
 def extract_state_dictionary():
 
@@ -71,12 +73,22 @@ def load_my_state_dict(model, state_dict):
         # (è un dizionario quindi fatto di coppie chiave-valore)
         for name, param in state_dict.items():
             loaded = False
+            if param == None:
+                print(name, param)
+
+                #param = torch.ones(1)  # se il parametro è None, lo inizializza a 1
+            # se il nome del parametro non è presente nello state dictionary del modello
             for name2 in own_state:
+                if own_state[name2] == None:
+                       own_state[name2] = torch.zeros_like(param)  # se il parametro è None, lo inizializza a zero
                 if name == name2:
                     #print(name, name2)
                     #print(param.size(), own_state[name2].size())
                     #print("\n")
-                    own_state[name].copy_(param)
+                    
+
+                    with torch.no_grad():
+                        own_state[name].copy_(param)
                     loaded = True
                 elif name == ("module." + name2):
                     own_state[name.split("module.")[-1]].copy_(param)
@@ -106,9 +118,12 @@ def load_my_state_dict(model, state_dict):
 
         return model
 
-def load_my_quant_fx_state_dict(model, filepath, device='cpu', print_model=False):
 
+def load_my_quant_erfnet_state_dict(filepath, device='cpu', print_model=False):
+
+    model = ERFNet(num_classes=20)
     model.eval()
+
     qconfig_opt = get_default_qconfig("x86")
 
     qconfig_mapping = QConfigMapping().set_global(qconfig_opt).set_object_type(
@@ -122,13 +137,44 @@ def load_my_quant_fx_state_dict(model, filepath, device='cpu', print_model=False
     model = convert_fx(model)
     if print_model:
         print(model)
-    model.load_state_dict(torch.load(filepath))
+    try:
+        model.load_state_dict(torch.load(filepath))
+    except RuntimeError as e:
+        print("Error loading state dict:", e)
+        print("Attempting to load state dict with custom function...")
+        model = load_my_state_dict(model, torch.load(filepath, map_location=torch.device(device)))
     if print_model:
       print("model loaded successfully")
 
     model = model.to(device)
 
     return model
+
+
+def load_my_quant_midenet_state_dict(filepath,device='cpu',printing=False):
+    model = MidENet(num_classes=20)
+    model.eval()
+    qconfig_opt = get_default_qconfig("x86")
+
+    qconfig_mapping = QConfigMapping().set_global(qconfig_opt).set_object_type(
+                                      torch.nn.ConvTranspose2d, get_default_qconfig("qnnpack")
+                                  )  # qconfig_opt is an optional qconfig, either a valid qconfig or None
+    dataloader = get_cityscapes_loader("./Dataset/Cityscapes", 10, 'val',num_workers=4,imagesize=(512, 1024))	
+    example_inputs = dataloader.dataset[0][0].unsqueeze(0)
+    model = prepare_fx(model, qconfig_mapping, example_inputs)
+    if printing:
+        print('model.graph: ')
+        print(model.graph)
+    model = convert_fx(model)
+    if printing:
+        print('model: ')
+        print(model)
+    model = load_my_state_dict(model,torch.load(filepath, map_location=torch.device(device)))
+    if printing:
+      print("model loaded successfully")
+
+    return model
+
 
 def adapt_state_dict():
 

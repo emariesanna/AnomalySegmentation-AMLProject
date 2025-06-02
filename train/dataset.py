@@ -11,7 +11,7 @@ from PIL import Image
 from torch.utils.data import Dataset, DataLoader
 from PIL import Image
 from torchvision.transforms import Compose, Resize, ToTensor
-from transform import Relabel, ToLabel
+from train.transform import Relabel, ToLabel
 
 
 EXTENSIONS = ['.jpg', '.png']

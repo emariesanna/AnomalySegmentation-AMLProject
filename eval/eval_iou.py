@@ -36,6 +36,13 @@ def prune_loader(loader, num_splits=5):
 
 def main(model, datadir, cpu, num_classes, batch_size=1, ignoreIndex=19, print_images=0, imagesize=(512, 1024), split=0):
 
+    num_images = 0
+
+    if not cpu:
+        model = model.cuda()
+    else:
+        model = model.cpu()
+        model = model.to(torch.float32)
     # load the dataset
     loader = get_cityscapes_loader(datadir, batch_size, 'val', 4, imagesize)
 
@@ -55,14 +62,26 @@ def main(model, datadir, cpu, num_classes, batch_size=1, ignoreIndex=19, print_i
 
     for step, (images, labels, filename, filenameGt) in enumerate(loader):
 
+        num_images += images.size(0)
+
         # if the cpu flag is not set, move the data to the gpu
         if (not cpu):
             images = images.cuda()
             labels = labels.cuda()
+        else:
+            images = images.cpu()
+            labels = labels.cpu()
 
         # launch the model with the images as input while disabling gradient computation
         inputs = Variable(images)
+        
+
+        if cpu:
+            inputs = inputs[:,:3,:,:]
+
+
         with torch.no_grad():
+            model.eval()
             out = model(inputs)
 
         #print(out.shape)
@@ -92,7 +111,7 @@ def main(model, datadir, cpu, num_classes, batch_size=1, ignoreIndex=19, print_i
         iou_classes_str.append(iouStr)
 
     print("---------------------------------------")
-    print("Took ", time.time()-start, "seconds")
+    print(f"Took {time.time()-start} seconds - {num_images/(time.time()-start)} fps")
     print("=======================================")
     #print("TOTAL IOU: ", iou * 100, "%")
     print("Per-Class IoU:")

@@ -5,11 +5,11 @@ from torch.utils.data import DataLoader
 from torch.autograd import Variable
 from argparse import ArgumentParser
 from torchvision.transforms import Resize, ToTensor
-from transform import ToLabel, Relabel
-from dataset import cityscapes
-from erfnet import ERFNet
-from bisenet import BiSeNetV1
-from enet import ENet
+from train.transform import ToLabel, Relabel
+from train.dataset import cityscapes
+from train.erfnet import ERFNet
+from train.bisenet import BiSeNetV1
+from train.enet import ENet
 
 
 NUM_CLASSES = 20  # Cityscapes classes

@@ -3,9 +3,10 @@ import random
 import time
 import numpy as np
 from eval.bisenet import BiSeNetV1
-from utilities.state_dictionary import load_my_quant_fx_state_dict, load_my_state_dict
+from utilities.state_dictionary import load_my_state_dict, load_my_quant_erfnet_state_dict, load_my_quant_midenet_state_dict
 import torch
 from eval.erfnet import ERFNet
+from models.midenet import MidENet
 from argparse import ArgumentParser
 from eval.temperature_scaling import ModelWithTemperature
 from eval.enet import ENet
@@ -36,7 +37,7 @@ TEMPERATURES = [0] #[0, 0.5, 0.75, 1.1, 2.15]
 # flag per attivare valutazione di Anomaly Detection tramite void class
 VOID = 1
 # modello da utilizzare
-MODEL = "enet"  # "erfnet", "enet", "bisenet"
+MODEL = "midenet"  # "erfnet", "enet", "bisenet", "midenet"
 # pesi prunati sì/no
 PRUNED = 0
 # flag per attivare la quantizzazione
@@ -79,16 +80,10 @@ def main():
     if MODEL == "erfnet":
         modelclass = "erfnet.py"
         if VOID == 0:
-            if PRUNED == 1:
-                if QUANT == 1:
-                    weights = "pruning_quantization/erfnet_pretrained_pruned_30%_quantized_fx.pth"
-                else:
-                    weights = "pruning_quantization/erfnet_pretrained_pruned_30%.pth"
+            if PRUNED == 0 and QUANT == 0:
+                weights = "erfnet_pretrained.pth"
             else:
-                if QUANT == 1:
-                    weights = "pruning_quantization/erfnet_pretrained_quantized_fx.pth"
-                else:
-                    weights = "erfnet_pretrained.pth"
+                raise ValueError("Enable VOID flag to use puning or quantization.")
         else:
             if PRUNED == 1:
                 if QUANT == 1:
@@ -110,6 +105,13 @@ def main():
         modelclass = "bisenetv1.py"
         weights = "bisenet_finetuned.pth"
         model = BiSeNetV1(NUM_CLASSES, aux_mode="eval")
+    elif MODEL == "midenet":
+        modelclass = "midenet.py"
+        if QUANT == 1:
+            weights = "pruning_quantization/enet/midenet_quantized_fx.pth"
+        else:
+            weights = "distillation/midenet_distilled_19_232483.6588287815.pth"
+        model = MidENet(NUM_CLASSES)
 
     # definisce un parser, ovvero un oggetto che permette di leggere gli argomenti passati da riga di comando
     parser = ArgumentParser()
@@ -163,7 +165,7 @@ def main():
     if QUANT == 0:
         state_dict = torch.load(weightspath, map_location=lambda storage, loc: storage)
     else:
-        model = load_my_quant_fx_state_dict(weightspath)
+        model = load_my_quant_midenet_state_dict(weightspath)
 
     # carica nel modello lo state dictionary creato
     if QUANT == 0:
@@ -271,6 +273,4 @@ def main():
             
             
 if __name__ == '__main__':
-    for model in ["enet", "erfnet", "bisenet"]:
-        MODEL = model
-        main()
+    main()
